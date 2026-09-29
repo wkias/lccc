@@ -771,6 +771,13 @@ jobs:
             --lccc target/fastbuild/lccc \
             -j 2 \
             --json regression-dbgassert-results.json 2>&1 | tee regression-dbgassert-results.log
+
+      - name: Upload compiled lccc binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: lccc-fastbuild
+          path: target/fastbuild/lccc
+          
       # The result artifacts are retained already, but GitHub's public job
       # view truncates long outputs, and a gate that fails without its
       # artifacts is a report without evidence. This step runs at the very
